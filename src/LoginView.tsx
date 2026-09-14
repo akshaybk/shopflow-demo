@@ -1,0 +1,8 @@
+import { ArrowRight, LockKeyhole, Store } from 'lucide-react'
+import { roleDetails } from './data/demoData'
+import type { Role } from './data/demoData'
+
+export function LoginView({ onLogin }: { onLogin: (role: Role) => void }) {
+  const accounts: Role[] = ['manager', 'super-manager', 'shareholder']
+  return <div className="login-screen"><div className="login-brand"><div className="brand-mark"><Store size={19} /></div><span>shop<span>flow</span></span></div><div className="login-layout"><div className="login-intro"><div className="eyebrow">Retail operations, made clear</div><h1>Run the shop<br /><em>with confidence.</em></h1><p>A calm, connected workspace for sales, inventory, and the decisions that keep your business moving.</p><div className="login-proof"><span><LockKeyhole size={15} /> Demo environment</span><span>INR · Bengaluru</span></div></div><div className="login-card"><div className="login-card-heading"><div className="eyebrow">Welcome back</div><h2>Choose a demo account</h2><p>Explore the experience for each role.</p></div><div className="account-list">{accounts.map((role) => <button className="account-option" key={role} onClick={() => onLogin(role)}><div className={`account-role ${role}`}><span>{roleDetails[role].name.split(' ').map((part) => part[0]).join('')}</span></div><div><strong>{roleDetails[role].label}</strong><small>{roleDetails[role].email}</small></div><ArrowRight size={17} /></button>)}</div><div className="demo-note">Use any account to enter the interactive prototype.<br />No password required for this demo.</div></div></div><small className="login-footer">Shopflow prototype · 2024</small></div>
+}
